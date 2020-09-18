@@ -49,8 +49,7 @@ class EncryptTest < Minitest::Test
   end
 
   def test_it_can_find_total_shifts
-    encrypt = mock("Encrypt Object")
-    encrypt.stubs(:generate_key).returns("11111")
-    assert_equal ({a: 10, b: 7, c: 4, d: 10}), encrypt.total_shifts(key, 9639)
+    encrypt = Encrypt.new
+    assert_equal ({a: 20, b: 17, c: 14, d: 20}), encrypt.total_shifts("111111", "9639")
   end
 end
