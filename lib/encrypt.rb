@@ -1,7 +1,9 @@
 class Encrypt
-  attr_reader :key
+  attr_reader :key,
+              :shift_categories
   def initialize
     @key = self.generate_key
+    @shift_categories = [:a, :b, :c, :d]
   end
 
   def generate_key
@@ -13,12 +15,11 @@ class Encrypt
   end
 
   def set_key_shifts(key = @key)
-    shift_categories = [:a, :b, :c, :d]
     shifts_to_keys = {}
-    shifts_to_keys[shift_categories[0]] = key[0..1].to_i
-    shifts_to_keys[shift_categories[1]] = key[1..2].to_i
-    shifts_to_keys[shift_categories[2]] = key[2..3].to_i
-    shifts_to_keys[shift_categories[3]] = key[3..4].to_i
+    shifts_to_keys[@shift_categories[0]] = key[0..1].to_i
+    shifts_to_keys[@shift_categories[1]] = key[1..2].to_i
+    shifts_to_keys[@shift_categories[2]] = key[2..3].to_i
+    shifts_to_keys[@shift_categories[3]] = key[3..4].to_i
     shifts_to_keys
   end
 
@@ -32,11 +33,10 @@ class Encrypt
 
   def set_offset_shifts(last_four)
     shifts_to_offsets = {}
-    shift_categories = [:a, :b, :c, :d]
-    shifts_to_offsets[shift_categories[0]] = last_four[0].to_i
-    shifts_to_offsets[shift_categories[1]] = last_four[1].to_i
-    shifts_to_offsets[shift_categories[2]] = last_four[2].to_i
-    shifts_to_offsets[shift_categories[3]] = last_four[3].to_i
+    shifts_to_offsets[@shift_categories[0]] = last_four[0].to_i
+    shifts_to_offsets[@shift_categories[1]] = last_four[1].to_i
+    shifts_to_offsets[@shift_categories[2]] = last_four[2].to_i
+    shifts_to_offsets[@shift_categories[3]] = last_four[3].to_i
     shifts_to_offsets
   end
 end
