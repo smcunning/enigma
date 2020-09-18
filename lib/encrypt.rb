@@ -21,4 +21,8 @@ class Encrypt
     shifts_to_keys[shift_categories[3]] = key[3..4].to_i
     shifts_to_keys
   end
+
+  def find_squared_date(date)
+    date.to_i ** 2 
+  end
 end
