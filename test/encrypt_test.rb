@@ -8,6 +8,12 @@ class EncryptTest < Minitest::Test
     assert_instance_of Encrypt, encrypt
   end
 
+  def test_it_has_attributes
+    encrypt = Encrypt.new
+    encrypt.stubs(:key).returns("12345")
+    assert_equal "12345", encrypt.key
+  end
+
   def test_it_can_generate_key
     encrypt = mock("Encrypt Object")
     encrypt.stubs(:generate_key).returns("12345")
