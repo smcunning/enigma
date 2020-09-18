@@ -39,4 +39,10 @@ class Encrypt
     shifts_to_offsets[@shift_categories[3]] = last_four[3].to_i
     shifts_to_offsets
   end
+
+  def total_shifts(key, last_four)
+    key_shifts = set_key_shifts(key)
+    offset_shifts = set_offset_shifts(last_four)
+    key_shifts.merge!(offset_shifts) { |k, o, n| o + n }
+  end
 end
