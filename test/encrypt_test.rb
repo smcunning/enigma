@@ -12,6 +12,7 @@ class EncryptTest < Minitest::Test
     encrypt = Encrypt.new
     encrypt.stubs(:key).returns("12345")
     assert_equal "12345", encrypt.key
+    assert_equal [:a, :b, :c, :d], encrypt.shift_categories
   end
 
   def test_it_can_generate_key
