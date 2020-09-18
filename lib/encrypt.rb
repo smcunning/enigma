@@ -23,6 +23,10 @@ class Encrypt
   end
 
   def find_squared_date(date)
-    date.to_i ** 2 
+    date.to_i ** 2
+  end
+
+  def last_four_digits(date_squared)
+    date_squared.digits[0..3].join.to_i
   end
 end
