@@ -25,4 +25,25 @@ class EncryptTest < Minitest::Test
     key = "12345"
     assert_equal ({a: 12, b: 23, c: 34, d: 45}), encrypt.set_key_shifts(key)
   end
+
+  def test_it_can_square_date
+    encrypt = Encrypt.new
+    date = "120787"
+    assert_equal 14589499369, encrypt.find_squared_date(date)
+  end
+
+  def test_it_can_find_last_four_digits
+    encrypt = Encrypt.new
+    date = "120787"
+    date_squared = encrypt.find_squared_date(date)
+    assert_equal "9639", encrypt.last_four_digits(date_squared)
+  end
+
+  def test_it_can_set_offset_shifts
+    encrypt = Encrypt.new
+    date = "120787"
+    date_squared = encrypt.find_squared_date(date)
+    last_four = encrypt.last_four_digits(date_squared)
+    assert_equal ({a: 9, b: 6, c: 3, d: 9}), encrypt.set_offset_shifts(last_four)
+  end
 end
