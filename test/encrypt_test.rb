@@ -47,4 +47,10 @@ class EncryptTest < Minitest::Test
     last_four = encrypt.last_four_digits(date_squared)
     assert_equal ({a: 9, b: 6, c: 3, d: 9}), encrypt.set_offset_shifts(last_four)
   end
+
+  def test_it_can_find_total_shifts
+    encrypt = mock("Encrypt Object")
+    encrypt.stubs(:generate_key).returns("11111")
+    assert_equal ({a: 10, b: 7, c: 4, d: 10}), encrypt.total_shifts(key, 9639)
+  end
 end
