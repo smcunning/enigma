@@ -27,6 +27,16 @@ class Encrypt
   end
 
   def last_four_digits(date_squared)
-    date_squared.digits[0..3].join.to_i
+    date_squared.digits[0..3].join
+  end
+
+  def set_offset_shifts(last_four)
+    shifts_to_offsets = {}
+    shift_categories = [:a, :b, :c, :d]
+    shifts_to_offsets[shift_categories[0]] = last_four[0].to_i
+    shifts_to_offsets[shift_categories[1]] = last_four[1].to_i
+    shifts_to_offsets[shift_categories[2]] = last_four[2].to_i
+    shifts_to_offsets[shift_categories[3]] = last_four[3].to_i
+    shifts_to_offsets
   end
 end
