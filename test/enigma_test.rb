@@ -12,6 +12,6 @@ class EnigmaTest < Minitest::Test
 
   def test_it_can_read_message
     enigma = Enigma.new
-    assert_equal 'hello world', enigma.message.read
+    assert_equal 'hello world', enigma.message.read.chomp
   end
 end
