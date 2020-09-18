@@ -36,6 +36,6 @@ class EncryptTest < Minitest::Test
     encrypt = Encrypt.new
     date = "120787"
     date_squared = encrypt.find_squared_date(date)
-    assert_equal 9369, encrypt.last_four_digits(date_squared)
+    assert_equal 9639, encrypt.last_four_digits(date_squared)
   end
 end
