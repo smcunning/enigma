@@ -5,9 +5,21 @@ class Encrypt
   def initialize
     @key = self.generate_key
     @shift_categories = [:a, :b, :c, :d]
-    @characters = ("a".."z").to_a << " "
+    @characters = ("a".."z").to_a << (" ")
   end
 
+#-----Encryption
+  def set_message_to_shift_categories(message)
+   split_message = message.split(//)
+   shift_to_chars = {}
+   split_message.each.with_index do |char, index|
+     category = index % @shift_categories.count
+     (shift_to_chars[@shift_categories[category]] ||= []) << char
+     end
+   shift_to_chars
+ end
+
+#-----ShiftGeneration
   def generate_key
     numbers = [0,1,2,3,4,5,6,7,8,9]
     key = []
