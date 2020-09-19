@@ -43,6 +43,6 @@ class Encrypt
   def total_shifts(key, last_four)
     key_shifts = set_key_shifts(key)
     offset_shifts = set_offset_shifts(last_four)
-    key_shifts.merge!(offset_shifts) { |k, o, n| o + n }
+    key_shifts.merge!(offset_shifts) { |shift, old_val, new_val| old_val + new_val }
   end
 end
