@@ -1,9 +1,11 @@
 class Encrypt
   attr_reader :key,
-              :shift_categories
+              :shift_categories,
+              :characters
   def initialize
     @key = self.generate_key
     @shift_categories = [:a, :b, :c, :d]
+    @characters = ("a".."z").to_a << " "
   end
 
   def generate_key
