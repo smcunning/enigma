@@ -1,11 +1,15 @@
 class Encrypt
-  attr_reader :key,
+  attr_reader :message,
+              :key,
+              :date,
               :shift_categories,
               :characters
-  def initialize
-    @key = self.generate_key
+  def initialize(message, key = self.generate_key, date)
+    @key = key
+    @message = message
+    @date = date
     @shift_categories = [:a, :b, :c, :d]
-    @characters = ("a".."z").to_a << (" ")
+    @characters = ("a".."z").to_a << ' '
   end
 
 #-----Encryption
@@ -28,7 +32,7 @@ class Encrypt
     key.join
   end
 
-  def set_key_shifts(key = @key)
+  def set_key_shifts(key)
     shifts_to_keys = {}
     shifts_to_keys[@shift_categories[0]] = key[0..1].to_i
     shifts_to_keys[@shift_categories[1]] = key[1..2].to_i
