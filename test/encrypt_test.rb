@@ -60,6 +60,6 @@ class EncryptTest < Minitest::Test
     encrypt = Encrypt.new
     message = "hello world"
     expected = ({:a=>['h','o','r'], :b=>['e',' ','l'], :c=>['l','w','d'], :d=>['l', 'o']})
-    assert_equal expected, encrypt.set_message_to_shift_categories
+    assert_equal expected, encrypt.set_message_to_shift_categories(message)
   end
 end
