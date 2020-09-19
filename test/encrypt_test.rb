@@ -25,6 +25,12 @@ class EncryptTest < Minitest::Test
     assert_equal "12345", encrypt.generate_key
   end
 
+  def test_it_can_find_todays_date
+    encrypt = Encrypt.new("hello world", "12345")
+    assert_equal "190920", encrypt.date
+    assert_equal "190920", encrypt.todays_date
+  end
+
   def test_it_can_set_key_shifts
     encrypt = Encrypt.new("hello world", "12345", "120787")
     assert_equal ({a: 12, b: 23, c: 34, d: 45}), encrypt.set_key_shifts(encrypt.key)
