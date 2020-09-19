@@ -1,10 +1,12 @@
+require 'date'
+
 class Encrypt
   attr_reader :message,
               :key,
               :date,
               :shift_categories,
               :characters
-  def initialize(message, key = self.generate_key, date)
+  def initialize(message, key = self.generate_key, date = self.todays_date)
     @key = key
     @message = message
     @date = date
@@ -30,6 +32,10 @@ class Encrypt
     5.times do (key << numbers.sample)
     end
     key.join
+  end
+
+  def todays_date
+    Time.now.strftime("%d%m%y")
   end
 
   def set_key_shifts(key)
