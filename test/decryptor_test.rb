@@ -41,8 +41,14 @@ class DecryptorTest < Minitest::Test
     expected = ({:a=>['h','o','r'], :b=>['e',' ','l'], :c=>['l','w','d'], :d=>['l', 'o']})
     assert_equal expected, decryptor.shift_message_characters
 
-    encrypt_2 = Encryptor.new("o33m", "02715", "040895")
-    expected_2 = ({:a=>["l"], :b=>["3"], :c=>["3"], :d=>["t"]})
-    assert_equal expected_2, encrypt_2.shift_message_characters
+    decryptor_2 = Decryptor.new("o33m", "02715", "040895")
+    expected_2 = ({:a=>['l'], :b=>['3'], :c=>['3'], :d=>['t']})
+    assert_equal expected_2, decryptor_2.shift_message_characters
   end
+
+  def test_it_can_decrypt_ciphertext
+    decryptor = Decryptor.new("keder ohulw", "02715", "040895")
+    assert_equal "hello world", decryptor.decrypt_cipher_text
+  end
+
 end
