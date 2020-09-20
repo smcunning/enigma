@@ -40,12 +40,10 @@ class EncryptTest < Minitest::Test
     encrypt = Encrypt.new("hello world", "12345", "120787")
     assert_equal "9639", encrypt.transform_date
   end
-  
+
   def test_it_can_set_offset_shifts
     encrypt = Encrypt.new("hello world", "12345", "120787")
-    date_squared = encrypt.find_squared_date(encrypt.date)
-    last_four = encrypt.last_four_digits(date_squared)
-    assert_equal ({a: 9, b: 6, c: 3, d: 9}), encrypt.set_offset_shifts(last_four)
+    assert_equal ({a: 9, b: 6, c: 3, d: 9}), encrypt.set_offset_shifts
   end
 
   def test_it_can_find_total_shifts
