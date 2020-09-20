@@ -44,13 +44,13 @@ class EncryptorTest < Minitest::Test
   end
 
   def test_it_can_set_offset_shifts
-    encrypt = Encryptor.new("hello world", "12345", "120787")
-    assert_equal ({a: 9, b: 6, c: 3, d: 9}), encrypt.set_offset_shifts
+    encrypt = Encryptor.new("hello world", "02715", "040895")
+    assert_equal ({a: 1, b: 0, c: 2, d: 5}), encrypt.set_offset_shifts
   end
 
   def test_it_can_find_total_shifts
-    encrypt = Encryptor.new("hello world", "12345", "120787")
-    assert_equal ({a: 21, b: 29, c: 37, d: 54}), encrypt.total_shifts
+    encrypt = Encryptor.new("hello world", "02715", "040895")
+    assert_equal ({a: 3, b: 27, c: 73, d: 20}), encrypt.total_shifts
   end
 
   def test_it_can_assign_shift_categories_to_message
