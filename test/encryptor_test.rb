@@ -34,13 +34,13 @@ class EncryptorTest < Minitest::Test
   end
 
   def test_it_can_set_key_shifts
-    encrypt = Encryptor.new("hello world", "12345", "120787")
-    assert_equal ({a: 12, b: 23, c: 34, d: 45}), encrypt.set_key_shifts
+    encrypt = Encryptor.new("hello world", "02715", "040895")
+    assert_equal ({a: 02, b: 27, c: 71, d: 15}), encrypt.set_key_shifts
   end
 
   def test_it_can_transform_date
-    encrypt = Encryptor.new("hello world", "12345", "120787")
-    assert_equal "9639", encrypt.transform_date
+    encrypt = Encryptor.new("hello world", "02715", "040895")
+    assert_equal "1025", encrypt.transform_date
   end
 
   def test_it_can_set_offset_shifts
