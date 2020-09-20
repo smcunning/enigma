@@ -75,4 +75,9 @@ class EncryptTest < Minitest::Test
     expected = ({:a=>['b','i','l'], :b=>['g','b','n'], :c=>['v','f','n'], :d=>['l', 'o']})
     assert_equal expected, encrypt.shift_message_characters
   end
+
+  def test_it_can_encrypt_message
+      encrypt = Encrypt.new("hello world", "12345", "120787")
+      assert_equal "bilgbnvfnlo", encrypt.encrypt_message
+  end
 end
