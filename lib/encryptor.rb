@@ -48,7 +48,7 @@ class Encryptor
    category_to_character_sets = {}
    @shift_categories.each do |category|
      category_to_character_sets[category] =
-     Hash[@characters.zip(@characters.rotate(total_shifts[category]))]
+     Hash[@characters.zip(@characters.rotate(total_shifts[category] % 27))]
    end
    category_to_character_sets
  end
@@ -77,7 +77,7 @@ class Encryptor
 
   def transform_date
     squared = @date.to_i ** 2
-    squared.digits[0..3].join
+    squared.to_s[-4..-1]
   end
 
   def set_offset_shifts
