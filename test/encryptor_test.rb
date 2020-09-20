@@ -5,15 +5,15 @@ require 'mocha/minitest'
 class EncryptorTest < Minitest::Test
 
   def test_it_exists
-    encrypt = Encryptor.new("hello world", "12345", "120787")
+    encrypt = Encryptor.new("hello world", "02715", "040895")
     assert_instance_of Encryptor, encrypt
   end
 
   def test_it_has_attributes
-    encrypt = Encryptor.new("hello world", "12345", "120787")
-    assert_equal "12345", encrypt.key
+    encrypt = Encryptor.new("hello world", "02715", "040895")
+    assert_equal "02715", encrypt.key
     assert_equal "hello world", encrypt.message
-    assert_equal "120787", encrypt.date
+    assert_equal "040895", encrypt.date
     assert_equal [:a, :b, :c, :d], encrypt.shift_categories
 
     expected = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ']
