@@ -16,10 +16,6 @@ class Encrypt
 
 #-----Encryption
 
-  def encrypt_message(message, key, date)
-
-  end
-
   def set_message_to_shift_categories
     shift_to_chars = {}
     split_message = message.downcase.split('')
@@ -67,6 +63,11 @@ class Encrypt
 
   def last_four_digits(date_squared)
     date_squared.digits[0..3].join
+  end
+
+  def transform_date
+    squared = @date.to_i ** 2
+    squared.digits[0..3].join
   end
 
   def set_offset_shifts(last_four)
