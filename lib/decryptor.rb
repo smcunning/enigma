@@ -16,6 +16,15 @@ class Decryptor
     @characters = ("a".."z").to_a << ' '
   end
 
+  def shifted_character_sets
+    category_to_character_sets = {}
+    @shift_categories.each do |category|
+      category_to_character_sets[category] =
+      Hash[@characters.zip(@characters.rotate((total_shifts[category]*-1) % 27))]
+    end
+    category_to_character_sets
+  end
+
   def set_message_to_shift_categories
     shift_to_chars = {}
     split_message = cipher_text.downcase.split('')
@@ -25,5 +34,5 @@ class Decryptor
     end
     shift_to_chars
   end
-  
+
 end
