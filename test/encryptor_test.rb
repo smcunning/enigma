@@ -54,30 +54,30 @@ class EncryptorTest < Minitest::Test
   end
 
   def test_it_can_assign_shift_categories_to_message
-    encrypt = Encryptor.new("hello world", "12345", "120787")
+    encrypt = Encryptor.new("hello world", "02715", "040895")
     expected = ({:a=>['h','o','r'], :b=>['e',' ','l'], :c=>['l','w','d'], :d=>['l', 'o']})
     assert_equal expected, encrypt.set_message_to_shift_categories
   end
 
   def test_it_can_create_shifted_character_sets
-    encrypt = Encryptor.new("hello world", "12345", "120787")
+    encrypt = Encryptor.new("hello world", "02715", "040895")
     expected = {
-      :a =>{'a'=>'v', 'b'=>'w', 'c'=>'x', 'd'=>'y', 'e'=>'z', 'f'=>' ', 'g'=>'a', 'h'=>'b', 'i'=>'c', 'j'=>'d', 'k'=>'e', 'l'=>'f', 'm'=>'g', 'n'=>'h', 'o'=>'i', 'p'=>'j', 'q'=>'k', 'r'=>'l', 's'=>'m', 't'=>'n', 'u'=>'o', 'v'=>'p', 'w'=>'q', 'x'=>'r', 'y'=>'s', 'z'=>'t', ' '=>'u'},
-      :b =>{'a'=>'c', 'b'=>'d', 'c'=>'e', 'd'=>'f', 'e'=>'g', 'f'=>'h', 'g'=>'i', 'h'=>'j', 'i'=>'k', 'j'=>'l', 'k'=>'m', 'l'=>'n', 'm'=>'o', 'n'=>'p', 'o'=>'q', 'p'=>'r', 'q'=>'s', 'r'=>'t', 's'=>'u', 't'=>'v', 'u'=>'w', 'v'=>'x', 'w'=>'y', 'x'=>'z', 'y'=>' ', 'z'=>'a', ' '=>'b'},
-      :c =>{'a'=>'k', 'b'=>'l', 'c'=>'m', 'd'=>'n', 'e'=>'o', 'f'=>'p', 'g'=>'q', 'h'=>'r', 'i'=>'s', 'j'=>'t', 'k'=>'u', 'l'=>'v', 'm'=>'w', 'n'=>'x', 'o'=>'y', 'p'=>'z', 'q'=>' ', 'r'=>'a', 's'=>'b', 't'=>'c', 'u'=>'d', 'v'=>'e', 'w'=>'f', 'x'=>'g', 'y'=>'h', 'z'=>'i', ' '=>'j'},
-      :d =>{'a'=>'a', 'b'=>'b', 'c'=>'c', 'd'=>'d', 'e'=>'e', 'f'=>'f', 'g'=>'g', 'h'=>'h', 'i'=>'i', 'j'=>'j', 'k'=>'k', 'l'=>'l', 'm'=>'m', 'n'=>'n', 'o'=>'o', 'p'=>'p', 'q'=>'q', 'r'=>'r', 's'=>'s', 't'=>'t', 'u'=>'u', 'v'=>'v', 'w'=>'w', 'x'=>'x', 'y'=>'y', 'z'=>'z', ' '=>' '},
+      :a =>{'a'=>'d', 'b'=>'e', 'c'=>'f', 'd'=>'g', 'e'=>'h', 'f'=>'i', 'g'=>'j', 'h'=>'k', 'i'=>'l', 'j'=>'m', 'k'=>'n', 'l'=>'o', 'm'=>'p', 'n'=>'q', 'o'=>'r', 'p'=>'s', 'q'=>'t', 'r'=>'u', 's'=>'v', 't'=>'w', 'u'=>'x', 'v'=>'y', 'w'=>'z', 'x'=>' ', 'y'=>'a', 'z'=>'b', ' '=>'c'},
+      :b =>{'a'=>'a', 'b'=>'b', 'c'=>'c', 'd'=>'d', 'e'=>'e', 'f'=>'f', 'g'=>'g', 'h'=>'h', 'i'=>'i', 'j'=>'j', 'k'=>'k', 'l'=>'l', 'm'=>'m', 'n'=>'n', 'o'=>'o', 'p'=>'p', 'q'=>'q', 'r'=>'r', 's'=>'s', 't'=>'t', 'u'=>'u', 'v'=>'v', 'w'=>'w', 'x'=>'x', 'y'=>'y', 'z'=>'z', ' '=>' '},
+      :c =>{'a'=>'t', 'b'=>'u', 'c'=>'v', 'd'=>'w', 'e'=>'x', 'f'=>'y', 'g'=>'z', 'h'=>' ', 'i'=>'a', 'j'=>'b', 'k'=>'c', 'l'=>'d', 'm'=>'e', 'n'=>'f', 'o'=>'g', 'p'=>'h', 'q'=>'i', 'r'=>'j', 's'=>'k', 't'=>'l', 'u'=>'m', 'v'=>'n', 'w'=>'o', 'x'=>'p', 'y'=>'q', 'z'=>'r', ' '=>'s'},
+      :d =>{'a'=>'u', 'b'=>'v', 'c'=>'w', 'd'=>'x', 'e'=>'y', 'f'=>'z', 'g'=>' ', 'h'=>'a', 'i'=>'b', 'j'=>'c', 'k'=>'d', 'l'=>'e', 'm'=>'f', 'n'=>'g', 'o'=>'h', 'p'=>'i', 'q'=>'j', 'r'=>'k', 's'=>'l', 't'=>'m', 'u'=>'n', 'v'=>'o', 'w'=>'p', 'x'=>'q', 'y'=>'r', 'z'=>'s', ' '=>'t'},
     }
     assert_equal expected, encrypt.shifted_character_sets
   end
 
   def test_it_can_shift_message_characters
-    encrypt = Encryptor.new("hello world", "12345", "120787")
-    expected = ({:a=>['b','i','l'], :b=>['g','b','n'], :c=>['v','f','n'], :d=>['l', 'o']})
+    encrypt = Encryptor.new("hello world", "02715", "040895")
+    expected = ({:a=>['k','e','d'], :b=>['e','r',' '], :c=>['o','h','u'], :d=>['l', 'w']})
     assert_equal expected, encrypt.shift_message_characters
   end
 
   def test_it_can_encrypt_message
-      encrypt = Encryptor.new("hello world", "12345", "120787")
-      assert_equal "bilgbnvfnlo", encrypt.encrypt_message
+      encrypt = Encryptor.new("hello world", "02715", "040895")
+      assert_equal "keder ohulw", encrypt.encrypt_message
   end
 end
