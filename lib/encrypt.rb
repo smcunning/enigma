@@ -16,6 +16,20 @@ class Encrypt
 
 #-----Encryption
 
+  def shift_message_characters
+    shifted_characters = {}
+    set_message_to_shift_categories.map do |cat, chars|
+      chars.map do |char|
+        if !@characters.include?(char)
+          (shifted_characters[cat] ||= []) << char
+        else
+          (shifted_characters[cat] ||= []) << shifted_character_sets[cat][char]
+        end
+      end
+    end
+    shifted_characters
+  end
+
   def set_message_to_shift_categories
     shift_to_chars = {}
     split_message = message.downcase.split('')
