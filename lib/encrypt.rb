@@ -16,15 +16,23 @@ class Encrypt
 
 #-----Encryption
   def set_message_to_shift_categories(message)
-   shift_to_chars = {}
-   split_message = message.downcase.split(//)
-   split_message.each_with_index do |char, index|
+    shift_to_chars = {}
+    split_message = message.downcase.split(//)
+    split_message.each_with_index do |char, index|
      category = index % @shift_categories.count
      (shift_to_chars[@shift_categories[category]] ||= []) << char
-     end
-   shift_to_chars
+    end
+    shift_to_chars
  end
 
+ def shifted_character_sets(key, last_four)
+   category_to_character_sets = {}
+   @shift_categories.each do |category|
+     category_to_character_sets[category] =
+     Hash[@characters.zip(@characters.rotate(total_shifts(key, last_four)[category]))]
+   end
+   category_to_character_sets
+ end
 
 #-----ShiftGeneration
   def generate_key
@@ -68,6 +76,6 @@ class Encrypt
   def total_shifts(key, last_four)
     key_shifts = set_key_shifts(key)
     offset_shifts = set_offset_shifts(last_four)
-    key_shifts.merge!(offset_shifts) { |shift, old_val, new_val| old_val + new_val }
+    key_shifts.merge!(offset_shifts) { |cat, key, offset| key + offset }
   end
 end
