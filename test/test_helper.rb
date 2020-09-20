@@ -5,4 +5,4 @@ require 'minitest/pride'
 require 'mocha/minitest'
 require 'date'
 require "./lib/enigma"
-require "./lib/encrypt"
+require "./lib/encryptor"
