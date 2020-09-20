@@ -56,15 +56,7 @@ class Encrypt
       d: key[3..4].to_i
     }
   end
-
-  def find_squared_date(date)
-    date.to_i ** 2
-  end
-
-  def last_four_digits(date_squared)
-    date_squared.digits[0..3].join
-  end
-
+  
   def transform_date
     squared = @date.to_i ** 2
     squared.digits[0..3].join
