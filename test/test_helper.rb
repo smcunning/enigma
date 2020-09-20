@@ -6,3 +6,4 @@ require 'mocha/minitest'
 require 'date'
 require "./lib/enigma"
 require "./lib/encryptor"
+require "./modules/shiftable"
