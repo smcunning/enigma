@@ -33,7 +33,7 @@ class EncryptTest < Minitest::Test
 
   def test_it_can_set_key_shifts
     encrypt = Encrypt.new("hello world", "12345", "120787")
-    assert_equal ({a: 12, b: 23, c: 34, d: 45}), encrypt.set_key_shifts
+    assert_equal ({a: 12, b: 23, c: 34, d: 45}), encrypt.set_key_shift
   end
 
   def test_it_can_transform_date
@@ -48,7 +48,7 @@ class EncryptTest < Minitest::Test
 
   def test_it_can_find_total_shifts
     encrypt = Encrypt.new("hello world", "12345", "120787")
-    assert_equal ({a: 21, b: 29, c: 37, d: 54}), encrypt.total_shifts("12345", "9639")
+    assert_equal ({a: 21, b: 29, c: 37, d: 54}), encrypt.total_shifts
   end
 
   def test_it_can_assign_shift_categories_to_message
