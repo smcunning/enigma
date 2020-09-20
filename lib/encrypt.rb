@@ -15,9 +15,14 @@ class Encrypt
   end
 
 #-----Encryption
-  def set_message_to_shift_categories(message)
+
+  def encrypt_message(message, key, date)
+
+  end
+
+  def set_message_to_shift_categories
     shift_to_chars = {}
-    split_message = message.downcase.split(//)
+    split_message = message.downcase.split('')
     split_message.each_with_index do |char, index|
      category = index % @shift_categories.count
      (shift_to_chars[@shift_categories[category]] ||= []) << char
@@ -44,16 +49,16 @@ class Encrypt
   end
 
   def todays_date
-    Time.now.strftime("%d%m%y")
+    Date.today.strftime("%d%m%y")
   end
 
   def set_key_shifts(key)
-    shifts_to_keys = {}
-    shifts_to_keys[@shift_categories[0]] = key[0..1].to_i
-    shifts_to_keys[@shift_categories[1]] = key[1..2].to_i
-    shifts_to_keys[@shift_categories[2]] = key[2..3].to_i
-    shifts_to_keys[@shift_categories[3]] = key[3..4].to_i
-    shifts_to_keys
+    {
+      a: key[0..1].to_i,
+      b: key[1..2].to_i,
+      c: key[2..3].to_i,
+      d: key[3..4].to_i
+    }
   end
 
   def find_squared_date(date)
