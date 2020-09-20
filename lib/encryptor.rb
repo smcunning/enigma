@@ -17,7 +17,7 @@ class Encryptor
 #-----Encryption
 
   def encrypt_message
-    shift_message_characters.values.join
+    shift_message_characters.values.reduce(&:zip).join
   end
 
   def shift_message_characters
