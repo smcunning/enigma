@@ -36,6 +36,11 @@ class EncryptTest < Minitest::Test
     assert_equal ({a: 12, b: 23, c: 34, d: 45}), encrypt.set_key_shifts(encrypt.key)
   end
 
+  def test_it_can_transform_date
+    encrypt = Encrypt.new("hello world", "12345", "120787")
+    assert_equal "9639", encrypt.transform_date
+  end
+  
   def test_it_can_square_date
     encrypt = Encrypt.new("hello world", "12345", "120787")
     assert_equal 14589499369, encrypt.find_squared_date(encrypt.date)
@@ -62,7 +67,7 @@ class EncryptTest < Minitest::Test
   def test_it_can_assign_shift_categories_to_message
     encrypt = Encrypt.new("hello world", "12345", "120787")
     expected = ({:a=>['h','o','r'], :b=>['e',' ','l'], :c=>['l','w','d'], :d=>['l', 'o']})
-    assert_equal expected, encrypt.set_message_to_shift_categories(encrypt.message)
+    assert_equal expected, encrypt.set_message_to_shift_categories
   end
 
   def test_it_can_create_shifted_character_sets
@@ -74,5 +79,16 @@ class EncryptTest < Minitest::Test
       :d =>{'a'=>'a', 'b'=>'b', 'c'=>'c', 'd'=>'d', 'e'=>'e', 'f'=>'f', 'g'=>'g', 'h'=>'h', 'i'=>'i', 'j'=>'j', 'k'=>'k', 'l'=>'l', 'm'=>'m', 'n'=>'n', 'o'=>'o', 'p'=>'p', 'q'=>'q', 'r'=>'r', 's'=>'s', 't'=>'t', 'u'=>'u', 'v'=>'v', 'w'=>'w', 'x'=>'x', 'y'=>'y', 'z'=>'z', ' '=>' '},
     }
     assert_equal expected, encrypt.shifted_character_sets(encrypt.key, "9639")
+  end
+
+  def test_it_can_shift_message_characters
+    encrypt = Encrypt.new("hello world", "12345", "120787")
+    expected = ({:a=>['b','i','l'], :b=>['g','b','n'], :c=>['v','f','n'], :d=>['l', 'o']})
+    assert_equal expected, encrypt.shift_message_characters(encrypt.key, "9639")
+  end
+
+  def test_it_can_transcribe_message
+    encrypt = Encrypt.new("hello world", "12345", "120787")
+    assert_equal "bilgbnvfnlo", encrypt.transcribe_message(encrypt.key, "9639")
   end
 end
