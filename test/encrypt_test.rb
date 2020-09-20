@@ -33,7 +33,7 @@ class EncryptTest < Minitest::Test
 
   def test_it_can_set_key_shifts
     encrypt = Encrypt.new("hello world", "12345", "120787")
-    assert_equal ({a: 12, b: 23, c: 34, d: 45}), encrypt.set_key_shift
+    assert_equal ({a: 12, b: 23, c: 34, d: 45}), encrypt.set_key_shifts
   end
 
   def test_it_can_transform_date
@@ -65,6 +65,6 @@ class EncryptTest < Minitest::Test
       :c =>{'a'=>'k', 'b'=>'l', 'c'=>'m', 'd'=>'n', 'e'=>'o', 'f'=>'p', 'g'=>'q', 'h'=>'r', 'i'=>'s', 'j'=>'t', 'k'=>'u', 'l'=>'v', 'm'=>'w', 'n'=>'x', 'o'=>'y', 'p'=>'z', 'q'=>' ', 'r'=>'a', 's'=>'b', 't'=>'c', 'u'=>'d', 'v'=>'e', 'w'=>'f', 'x'=>'g', 'y'=>'h', 'z'=>'i', ' '=>'j'},
       :d =>{'a'=>'a', 'b'=>'b', 'c'=>'c', 'd'=>'d', 'e'=>'e', 'f'=>'f', 'g'=>'g', 'h'=>'h', 'i'=>'i', 'j'=>'j', 'k'=>'k', 'l'=>'l', 'm'=>'m', 'n'=>'n', 'o'=>'o', 'p'=>'p', 'q'=>'q', 'r'=>'r', 's'=>'s', 't'=>'t', 'u'=>'u', 'v'=>'v', 'w'=>'w', 'x'=>'x', 'y'=>'y', 'z'=>'z', ' '=>' '},
     }
-    assert_equal expected, encrypt.shifted_character_sets(encrypt.key, "9639")
+    assert_equal expected, encrypt.shifted_character_sets
   end
 end
