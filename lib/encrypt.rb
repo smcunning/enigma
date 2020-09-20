@@ -56,13 +56,14 @@ class Encrypt
       d: key[3..4].to_i
     }
   end
-  
+
   def transform_date
     squared = @date.to_i ** 2
     squared.digits[0..3].join
   end
 
-  def set_offset_shifts(last_four)
+  def set_offset_shifts
+    last_four = transform_date
     {
       a: last_four[0].to_i,
       b: last_four[1].to_i,
