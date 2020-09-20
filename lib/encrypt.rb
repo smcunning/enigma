@@ -16,6 +16,10 @@ class Encrypt
 
 #-----Encryption
 
+  def encrypt_message
+    shift_message_characters.values.join
+  end 
+
   def shift_message_characters
     shifted_characters = {}
     set_message_to_shift_categories.map do |cat, chars|
