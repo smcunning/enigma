@@ -74,6 +74,10 @@ class EncryptorTest < Minitest::Test
     encrypt = Encryptor.new("hello world", "02715", "040895")
     expected = ({:a=>["k", "r", "u"], :b=>["e", " ", "l"], :c=>["d", "o", "w"], :d=>["e", "h"]})
     assert_equal expected, encrypt.shift_message_characters
+    #Testing for when character not in character set
+    encrypt_2 = Encryptor.new("l33t", "02715", "040895")
+    expected_2 = ({:a=>["o"], :b=>["3"], :c=>["3"], :d=>["m"]})
+    assert_equal expected_2, encrypt_2.shift_message_characters
   end
 
   def test_it_can_encrypt_message
