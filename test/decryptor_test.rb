@@ -18,4 +18,10 @@ class DecryptorTest < Minitest::Test
     expected = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ']
     assert_equal expected, decryptor.characters
   end
+
+  def test_it_can_assign_shift_categories_to_message
+    decryptor = Decryptor.new("keder ohulw", "02715", "040895")
+    expected = ({:a=>['k','r','u'], :b=>['e',' ','l'], :c=>['d','o','w'], :d=>['e', 'h']})
+    assert_equal expected, decryptor.set_message_to_shift_categories
+  end
 end
