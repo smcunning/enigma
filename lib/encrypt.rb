@@ -72,9 +72,9 @@ class Encrypt
     }
   end
 
-  def total_shifts(key, last_four)
-    key_shifts = set_key_shifts(key)
-    offset_shifts = set_offset_shifts(last_four)
+  def total_shifts
+    key_shifts = set_key_shifts
+    offset_shifts = set_offset_shifts
     key_shifts.merge!(offset_shifts) { |cat, key, offset| key + offset }
   end
 end
