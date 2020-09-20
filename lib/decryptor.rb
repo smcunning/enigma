@@ -16,6 +16,24 @@ class Decryptor
     @characters = ("a".."z").to_a << ' '
   end
 
+  def decrypt_cipher_text
+    shift_message_characters.values.reduce(&:zip).join
+  end
+
+  def shift_message_characters
+    shifted_characters = {}
+    set_message_to_shift_categories.map do |cat, chars|
+      chars.map do |char|
+        if !@characters.include?(char)
+          (shifted_characters[cat] ||= []) << char
+        else
+          (shifted_characters[cat] ||= []) << shifted_character_sets[cat][char]
+        end
+      end
+    end
+    shifted_characters
+  end
+
   def shifted_character_sets
     category_to_character_sets = {}
     @shift_categories.each do |category|
