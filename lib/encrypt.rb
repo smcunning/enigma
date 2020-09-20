@@ -70,12 +70,12 @@ class Encrypt
   end
 
   def set_offset_shifts(last_four)
-    shifts_to_offsets = {}
-    shifts_to_offsets[@shift_categories[0]] = last_four[0].to_i
-    shifts_to_offsets[@shift_categories[1]] = last_four[1].to_i
-    shifts_to_offsets[@shift_categories[2]] = last_four[2].to_i
-    shifts_to_offsets[@shift_categories[3]] = last_four[3].to_i
-    shifts_to_offsets
+    {
+      a: last_four[0].to_i,
+      b: last_four[1].to_i,
+      c: last_four[2].to_i,
+      d: last_four[3].to_i
+    }
   end
 
   def total_shifts(key, last_four)
