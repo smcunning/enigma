@@ -72,7 +72,7 @@ class EncryptorTest < Minitest::Test
 
   def test_it_can_shift_message_characters
     encrypt = Encryptor.new("hello world", "02715", "040895")
-    expected = ({:a=>['k','e','d'], :b=>['e','r',' '], :c=>['o','h','u'], :d=>['l', 'w']})
+    expected = ({:a=>["k", "r", "u"], :b=>["e", " ", "l"], :c=>["d", "o", "w"], :d=>["e", "h"]})
     assert_equal expected, encrypt.shift_message_characters
   end
 
