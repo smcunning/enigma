@@ -69,4 +69,10 @@ class EncryptTest < Minitest::Test
     }
     assert_equal expected, encrypt.shifted_character_sets
   end
+
+  def test_it_can_shift_message_characters
+    encrypt = Encrypt.new("hello world", "12345", "120787")
+    expected = ({:a=>['b','i','l'], :b=>['g','b','n'], :c=>['v','f','n'], :d=>['l', 'o']})
+    assert_equal expected, encrypt.shift_message_characters
+  end
 end
