@@ -26,11 +26,11 @@ class Encrypt
     shift_to_chars
  end
 
- def shifted_character_sets(key, last_four)
+ def shifted_character_sets
    category_to_character_sets = {}
    @shift_categories.each do |category|
      category_to_character_sets[category] =
-     Hash[@characters.zip(@characters.rotate(total_shifts(key, last_four)[category]))]
+     Hash[@characters.zip(@characters.rotate(total_shifts[category]))]
    end
    category_to_character_sets
  end
