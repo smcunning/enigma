@@ -1,4 +1,5 @@
 require './test/test_helper'
+require 'date'
 require 'mocha/minitest'
 
 class EncryptTest < Minitest::Test
@@ -27,8 +28,9 @@ class EncryptTest < Minitest::Test
 
   def test_it_can_find_todays_date
     encrypt = Encrypt.new("hello world", "12345")
-    assert_equal "190920", encrypt.date
-    assert_equal "190920", encrypt.todays_date
+    expected = (Date.today.strftime("%d%m%y"))
+    assert_equal expected, encrypt.date
+    assert_equal expected, encrypt.todays_date
   end
 
   def test_it_can_set_key_shifts
