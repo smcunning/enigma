@@ -2,7 +2,7 @@ require_relative '../modules/shiftable'
 class Enigma
   attr_reader :message
   include Shiftable
-  
+
   def encrypt(message, key = self.generate_key, date = self.todays_date)
     encryptor = Encryptor.new(message, key, date)
 
@@ -13,7 +13,7 @@ class Enigma
     }
   end
 
-  def decrypt(message, key, date)
+  def decrypt(message, key = self.generate_key, date = self.todays_date)
     decryptor = Decryptor.new(message, key, date)
 
     {
