@@ -22,8 +22,9 @@ class EncryptorTest < Minitest::Test
 
   def test_it_can_generate_key
     encrypt = Encryptor.new("hello world", "120787")
-    encrypt.stubs(:generate_key).returns("12345")
-    assert_equal "12345", encrypt.generate_key
+    assert_instance_of String, encrypt.generate_key
+    assert_equal 5, encrypt.generate_key.length
+    assert_instance_of Integer, encrypt.generate_key.to_i
   end
 
   def test_it_can_find_todays_date
