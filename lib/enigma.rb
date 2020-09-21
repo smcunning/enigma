@@ -1,10 +1,9 @@
+require_relative '../modules/shiftable'
 class Enigma
   attr_reader :message
-  def initialize
-    @message = File.open('message.txt', "r")
-  end
-
-  def encrypt(message, key, date)
+  include Shiftable
+  
+  def encrypt(message, key = self.generate_key, date = self.todays_date)
     encryptor = Encryptor.new(message, key, date)
 
     {
@@ -22,5 +21,5 @@ class Enigma
       key: decryptor.key,
       date: decryptor.date
     }
-  end 
+  end
 end
