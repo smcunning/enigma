@@ -23,8 +23,11 @@ class Enigma
     }
   end
 
-  def decrypt(message, key = self.generate_key, date = self.todays_date)
-    decryptor = Decryptor.new(message, key, date)
+  def decrypt(cipher_text, key = self.generate_key, date = self.todays_date)
+    @cipher_text = cipher_text
+    @key = key
+    @date = date
+    decryptor = Decryptor.new(@cipher_text, @key, @date)
 
     {
       encryption: decryptor.decrypt_cipher_text,
