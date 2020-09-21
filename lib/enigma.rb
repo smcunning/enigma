@@ -11,7 +11,10 @@ class Enigma
   end
 
   def encrypt(message, key = self.generate_key, date = self.todays_date)
-    encryptor = Encryptor.new(message, key, date)
+    @message = message
+    @key = key
+    @date = date
+    encryptor = Encryptor.new(@message, @key, @date)
 
     {
       encryption: encryptor.encrypt_message,
