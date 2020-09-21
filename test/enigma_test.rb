@@ -73,5 +73,12 @@ class EnigmaTest < Minitest::Test
                 date: '040895'
                 })
     assert_equal expected, enigma.encrypt('he7l% w1r-d', '02715', '040895')
+
+    expected_2 = ({
+                decryption: "he7l% w1r-d",
+                key: '02715',
+                date: '040895'
+                })
+    assert_equal expected_2, enigma.decrypt('ke7e% o1u-w', '02715', '040895')
   end
 end
