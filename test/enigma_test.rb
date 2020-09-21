@@ -10,11 +10,6 @@ class EnigmaTest < Minitest::Test
     assert_instance_of Enigma, enigma
   end
 
-  def test_it_can_read_message
-    enigma = Enigma.new
-    assert_equal 'hello world', enigma.message.read.chomp
-  end
-
   def test_it_can_encrypt_message
     enigma = Enigma.new
     expected = ({
