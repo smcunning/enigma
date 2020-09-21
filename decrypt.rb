@@ -1,5 +1,5 @@
 require './lib/enigma'
-require './lib/encryptor'
+require './lib/decryptor'
 
 handle = File.open(ARGV[0], "r")
 cipher_text = handle.read
@@ -7,9 +7,9 @@ handle.close
 
 enigma = Enigma.new
 
-decrypt = enigma.decrypt(cipher_text, "02715", "040895")
+decrypt = enigma.decrypt(cipher_text, ARGV[2], ARGV[3])
 decryption = File.open(ARGV[1], "w")
 decryption.write(decrypt[:decryption])
-encryption.close
+decryption.close
 
-puts "Created 'encrypted.txt' with the key #{enigma.key} and date #{enigma.date}"
+puts "Created 'decrypted.txt' with the key #{enigma.key} and date #{enigma.date}"
