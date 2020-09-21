@@ -5,7 +5,7 @@ handle = File.open(ARGV[0], "r")
 message = handle.read
 handle.close
 
-enigma = Enigma.new(message)
+enigma = Enigma.new
 
 encryption = File.open(ARGV[1], "w")
 encryption.write(enigma.encrypt(message))
