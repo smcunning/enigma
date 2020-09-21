@@ -31,5 +31,8 @@ class EnigmaTest < Minitest::Test
                 date: '040895'
                 })
     assert_equal expected, enigma.decrypt("keder ohulw", '02715', '040895')
+    assert_equal "keder ohulw", enigma.cipher_text
+    assert_equal "02715", enigma.key
+    assert_equal "040895", enigma.date
   end
 end
