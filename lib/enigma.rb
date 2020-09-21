@@ -23,7 +23,7 @@ class Enigma
     }
   end
 
-  def decrypt(cipher_text, key = self.generate_key, date = self.todays_date)
+  def decrypt(cipher_text, key, date = self.todays_date)
     @cipher_text = cipher_text
     @key = key
     @date = date
