@@ -36,11 +36,21 @@ class EnigmaTest < Minitest::Test
     assert_equal "040895", enigma.date
   end
 
+  def test_it_can_encrypt_with_key_and_todays_date
+    enigma = Enigma.new
+    Date.any_instance.stubs(:strftime).returns("040895")
+    expected = ({
+                encryption: "keder ohulw",
+                key: '02715',
+                date: Date.today.strftime("%d%m%y")
+                })
+    assert_equal expected, enigma.encrypt("hello world", '02715')
+  end
+
   def test_it_can_generate_key
     enigma = Enigma.new
     assert_instance_of String, enigma.generate_key
     assert_equal 5, enigma.generate_key.length
     assert_instance_of Integer, enigma.generate_key.to_i
-
   end
 end
