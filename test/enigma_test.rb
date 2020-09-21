@@ -35,4 +35,12 @@ class EnigmaTest < Minitest::Test
     assert_equal "02715", enigma.key
     assert_equal "040895", enigma.date
   end
+
+  def test_it_can_generate_key
+    enigma = Enigma.new
+    assert_instance_of String, enigma.generate_key
+    assert_equal 5, enigma.generate_key.length
+    assert_instance_of Integer, enigma.generate_key.to_i
+
+  end
 end
