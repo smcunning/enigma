@@ -30,7 +30,7 @@ class Enigma
     decryptor = Decryptor.new(@cipher_text, @key, @date)
 
     {
-      encryption: decryptor.decrypt_cipher_text,
+      decryption: decryptor.decrypt_cipher_text,
       key: decryptor.key,
       date: decryptor.date
     }
