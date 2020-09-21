@@ -64,4 +64,14 @@ class EnigmaTest < Minitest::Test
                 })
     assert_equal expected, enigma.decrypt("keder ohulw", '02715')
   end
+
+  def test_it_does_nothing_with_weird_characters
+    enigma = Enigma.new
+    expected = ({
+                encryption: "ke7e% o1u-w",
+                key: '02715',
+                date: '040895'
+                })
+    assert_equal expected, enigma.encrypt('he7l% w1r-d', '02715', '040895')
+  end
 end
