@@ -29,6 +29,8 @@ class EncryptorTest < Minitest::Test
   def test_it_can_find_todays_date
     encrypt = Encryptor.new("hello world", "12345")
     expected = (Date.today.strftime("%d%m%y"))
+    assert_instance_of String, encrypt.todays_date
+    assert_equal 6, encrypt.todays_date.length
     assert_equal expected, encrypt.date
     assert_equal expected, encrypt.todays_date
   end
