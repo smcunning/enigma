@@ -7,7 +7,7 @@ handle.close
 
 enigma = Enigma.new
 
-decrypt = enigma.decrypt(cipher_text, ARGV[2], date = ARGV[3])
+decrypt = enigma.decrypt(cipher_text, ARGV[2], ARGV[3] = Date.today.strftime("%d%m%y"))
 decryption = File.open(ARGV[1], "w")
 decryption.write(decrypt[:decryption])
 decryption.close
