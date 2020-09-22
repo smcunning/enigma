@@ -16,8 +16,6 @@ class Encryptor
     @characters = ("a".."z").to_a << ' '
   end
 
-#-----Encryption
-
   def encrypt_message
     shift_message_characters.values.reduce(&:zip).join
   end
