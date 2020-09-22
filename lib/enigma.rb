@@ -1,6 +1,9 @@
 require_relative '../modules/shiftable'
 class Enigma
-  attr_reader :message, :cipher_text, :key, :date
+  attr_reader :message,
+              :cipher_text,
+              :key,
+              :date
   include Shiftable
 
   def initialize
